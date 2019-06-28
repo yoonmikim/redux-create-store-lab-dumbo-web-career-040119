@@ -1,6 +1,7 @@
 export default function createStore(reducer) {
   // add your code here
-  return reducer
+  const store = createStore(reducer, window.STATE_FROM_SERVER)
+  return store
 }
 
 function render() {
