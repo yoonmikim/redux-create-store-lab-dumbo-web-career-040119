@@ -1,7 +1,24 @@
 export default function createStore(reducer) {
   // add your code here
-  const store = createStore(reducer, window.STATE_FROM_SERVER)
-  return store
+ let state;
+
+  function dispatch(action) {
+    state = reducer(state, action)
+    render()
+  }
+
+  function getState() {
+    return state;
+  }
+
+  dispatch({ type: '@@INIT' })
+
+  return {
+    dispatch,
+    getState
+  }
+}
+
 }
 
 function render() {
